@@ -1,0 +1,120 @@
+.listTypeHead {
+    width: 35%;
+    ;
+}
+
+.paymentCredHead {
+    padding-top: 10px;
+}
+
+.icnCoin {
+    font-size: 20px;
+}
+
+.SMSCred {
+    font-weight: 500;
+    font-size: 18px;
+    color: #404040;
+}
+
+.SMSCred-light {
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.remove-padding {
+    padding: 0;
+}
+
+.pad-left {
+    padding-left: 5px;
+}
+
+.check-icon {
+    font-size: 25px;
+    color: #4fc47f;
+}
+
+.paycredBtn {
+    text-align: right;
+}
+// <organisation tab>
+//reloading the page
+.position-relative {
+    position: relative;
+}
+//reloading the page
+.spinner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    /* Use the desired background color and transparency */
+}
+
+// <companies tab>
+//for "company logo"
+.img-container {
+    position: relative;
+  }
+  
+  .img-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(39, 38, 38);
+    font-size: 8px;
+    text-align: center;
+    background-color: hsl(0, 0%, 90%);
+    padding: 6px;
+  }
+//"change and remove button style"
+  .change-button{
+    background-color: #00bcd4;
+    border: none;
+    margin-right: 5px;
+  }
+  .remove-button{
+    background-color: #f44336;
+    border: none;
+  }
+
+//   <Payment Credentials>
+// button aligment(Save and Close)
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.switch {
+  border: 1px solid #ddd;
+  cursor: pointer;
+  // display: block;
+  line-height: 1;
+  width: 2.25rem;
+  height: 1.125rem;
+  position: relative;
+  box-sizing: content-box;
+  border-radius: 100px;
+  float:right;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+
+
+
+
+
+
+  
