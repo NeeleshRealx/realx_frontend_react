@@ -43,7 +43,7 @@ const Login = ({ history }) => {
         "email":username,
         "password":password
       }
-      axios.post("/api/register", postData).then((res)=>{
+      axios.post("/api/login", postData).then((res)=>{
         console.log(res,"data");
         // if(res.status == 1){
         //   toast.success(res.message);

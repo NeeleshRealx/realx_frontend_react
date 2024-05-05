@@ -45,98 +45,98 @@ const Navdata = () => {
     }
   }
 
-  const loadData=()=>{
-    document.body.classList.remove("twocolumn-panel");
-    if (iscurrentState === "Inbox") {
-      history("/inbox");
-      document.body.classList.add("twocolumn-panel");
-    }
-    if (iscurrentState === "Opportunities") {
-      history("/opportunities");
-      document.body.classList.add("twocolumn-panel");
-    }
-    if (iscurrentState === "CRMSettings") {
-      history("/crmsettings");
-      document.body.classList.add("twocolumn-panel");
-    }
-    if (iscurrentState === "Backloading") {
-      history("/backloading");
-      document.body.classList.add("twocolumn-panel");
-    }
-    if (iscurrentState === "Vehicle") {
-      history("/vehicleunavail");
-      document.body.classList.add("twocolumn-panel");
-    }
-    if (iscurrentState === "RemovalSettings") {
-      history("/removalsettings");
-      document.body.classList.add("twocolumn-panel");
-    }
+  // const loadData=()=>{
+  //   document.body.classList.remove("twocolumn-panel");
+  //   if (iscurrentState === "Inbox") {
+  //     history("/inbox");
+  //     document.body.classList.add("twocolumn-panel");
+  //   }
+  //   if (iscurrentState === "Opportunities") {
+  //     history("/opportunities");
+  //     document.body.classList.add("twocolumn-panel");
+  //   }
+  //   if (iscurrentState === "CRMSettings") {
+  //     history("/crmsettings");
+  //     document.body.classList.add("twocolumn-panel");
+  //   }
+  //   if (iscurrentState === "Backloading") {
+  //     history("/backloading");
+  //     document.body.classList.add("twocolumn-panel");
+  //   }
+  //   if (iscurrentState === "Vehicle") {
+  //     history("/vehicleunavail");
+  //     document.body.classList.add("twocolumn-panel");
+  //   }
+  //   if (iscurrentState === "RemovalSettings") {
+  //     history("/removalsettings");
+  //     document.body.classList.add("twocolumn-panel");
+  //   }
     
-    if (iscurrentState === "CleaningSettings") {
-      history("/CleaningSettings");
-      document.body.classList.add("twocolumn-panel");
-    }
+  //   if (iscurrentState === "CleaningSettings") {
+  //     history("/CleaningSettings");
+  //     document.body.classList.add("twocolumn-panel");
+  //   }
     
-    if (iscurrentState === "StorageSettings") {
-      history("/storagesettings");
-      document.body.classList.add("twocolumn-panel");
-    }
-    if (iscurrentState === "UnitsList") {
-      history("/unitslist");
-      document.body.classList.add("twocolumn-panel");
-    }
-    if (iscurrentState === "Invoices") {
-      history("/invoices");
-      document.body.classList.add("twocolumn-panel");
-    }
-    if (iscurrentState === "FinanceSettings") {
-      history("/financesettings");
-      document.body.classList.add("twocolumn-panel");
-    }
-    if (iscurrentState === "Employees") {
-      history("/employees");
-      document.body.classList.add("twocolumn-panel");
-    }
-    if (iscurrentState === "PeopleSettings") {
-      history("/peoplesettings");
-      document.body.classList.add("twocolumn-panel");
-    }
-    if (iscurrentState === "DashBoard") {
-      history("/dashboard");
-      document.body.classList.add("twocolumn-panel");
-    }
-    if (iscurrentState === "Settings") {
-      history("/settings");
-      document.body.classList.add("twocolumn-panel");
-    }
-    if (iscurrentState === "Documentation") {
-      history("/documentation");
-      document.body.classList.add("twocolumn-panel");
-    }
-    // if (iscurrentState === "Support") {
-    //   history("/support");
-    //   document.body.classList.add("twocolumn-panel");
-    // }
-    if (iscurrentState === "ManageSubscription") {
-      history("/subscription");
-      document.body.classList.add("twocolumn-panel");
-    }
+  //   if (iscurrentState === "StorageSettings") {
+  //     history("/storagesettings");
+  //     document.body.classList.add("twocolumn-panel");
+  //   }
+  //   if (iscurrentState === "UnitsList") {
+  //     history("/unitslist");
+  //     document.body.classList.add("twocolumn-panel");
+  //   }
+  //   if (iscurrentState === "Invoices") {
+  //     history("/invoices");
+  //     document.body.classList.add("twocolumn-panel");
+  //   }
+  //   if (iscurrentState === "FinanceSettings") {
+  //     history("/financesettings");
+  //     document.body.classList.add("twocolumn-panel");
+  //   }
+  //   if (iscurrentState === "Employees") {
+  //     history("/employees");
+  //     document.body.classList.add("twocolumn-panel");
+  //   }
+  //   if (iscurrentState === "PeopleSettings") {
+  //     history("/peoplesettings");
+  //     document.body.classList.add("twocolumn-panel");
+  //   }
+  //   if (iscurrentState === "DashBoard") {
+  //     history("/dashboard");
+  //     document.body.classList.add("twocolumn-panel");
+  //   }
+  //   if (iscurrentState === "Settings") {
+  //     history("/settings");
+  //     document.body.classList.add("twocolumn-panel");
+  //   }
+  //   if (iscurrentState === "Documentation") {
+  //     history("/documentation");
+  //     document.body.classList.add("twocolumn-panel");
+  //   }
+  //   // if (iscurrentState === "Support") {
+  //   //   history("/support");
+  //   //   document.body.classList.add("twocolumn-panel");
+  //   // }
+  //   if (iscurrentState === "ManageSubscription") {
+  //     history("/subscription");
+  //     document.body.classList.add("twocolumn-panel");
+  //   }
 
-    if (iscurrentState === "Others") {
-      history("/others");
-      document.body.classList.add("twocolumn-panel");
-    }
-    //
-    if (iscurrentState !== "Jobs") {
-      setIsJobs(false);
-    }
-    if (iscurrentState !== "Reporting") {
-      setIsReporting(false);
-    }
-    if (iscurrentState !== "Reporting") {
-      setIsReporting(false);
-    }
-  }
+  //   if (iscurrentState === "Others") {
+  //     history("/others");
+  //     document.body.classList.add("twocolumn-panel");
+  //   }
+  //   //
+  //   if (iscurrentState !== "Jobs") {
+  //     setIsJobs(false);
+  //   }
+  //   if (iscurrentState !== "Reporting") {
+  //     setIsReporting(false);
+  //   }
+  //   if (iscurrentState !== "Reporting") {
+  //     setIsReporting(false);
+  //   }
+  // }
 
   useEffect(() => {
     const api_token = JSON.parse(get_cookie('authUser'));
