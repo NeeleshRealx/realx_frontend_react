@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Card, CardBody, Col, Container, Input, Label, Row, Button, Form, FormFeedback, Alert, Spinner } from 'reactstrap';
+import { Card, CardBody, Col, Container, Input, Label, Row, Button, Form, FormFeedback, Alert, Spinner, ToastBody } from 'reactstrap';
 // import { Redirect } from 'react-router-dom'
 import Cookies from 'js-cookie'
+import axios from 'axios';
+import Toast from 'reactstrap';
 import { useLocation,useNavigate,Link } from "react-router-dom";
 import withRouter from "../../Components/Common/withRouter";
 
@@ -14,6 +16,7 @@ import withRouter from "../../Components/Common/withRouter";
 
 
 import './index.css'    
+import { ToastContainer } from 'react-toastify';
 
 const Login = ({ history }) => {
     const [username, setUsername] = useState('')
@@ -35,19 +38,32 @@ const Login = ({ history }) => {
   
     const submitForm = async event => {
       event.preventDefault()
-      const userDetails = { username, password }
-      const url = 'https://apis.ccbp.in/login'
-      const options = {
-        method: 'POST',
-        body: JSON.stringify(userDetails),
+      var postData={
+        "name":"dsdsds",
+        "email":username,
+        "password":password
       }
-      const response = await fetch(url, options)
-      const data = await response.json()
-      if (response.ok === true) {
-        onSubmitSuccess(data.jwt_token)
-      } else {
-        onSubmitFailure(data.error_msg)
-      }
+      axios.post("/api/register", postData).then((res)=>{
+        console.log(res,"data");
+        // if(res.status == 1){
+        //   toast.success(res.message);
+        //   onChangeData();
+        // }
+      })
+      // const userDetails = { email:username, password }
+      // const url = 'api/login'
+      // const options = {
+      //   method: 'POST',
+      //   body: JSON.stringify(userDetails),
+      // }
+      // const response = await fetch(url, options)
+      // const data = await response.json()
+      // if (response.ok === true) {
+      //   console.l
+      //   // onSubmitSuccess(data.jwt_token)
+      // } else {
+      //   // onSubmitFailure(data.error_msg)
+      // }
     }
   
     const renderPasswordField = () => {
@@ -71,6 +87,9 @@ const Login = ({ history }) => {
     const renderUsernameField = () => {
       return (
         <>
+        <ToastContainer>
+          <ToastBody></ToastBody>
+        </ToastContainer>
           <label className="input-label" htmlFor="username">
             USERNAME
           </label>

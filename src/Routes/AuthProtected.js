@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 
 import { useProfile } from "../Components/Hooks/UserHooks";
 
-import { logoutUser } from "../store/actions";
+// import { logoutUser } from "../store/actions";
 
 import { add_cookie, get_cookie } from "../helpers/get_cookie";
 
