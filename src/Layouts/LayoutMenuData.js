@@ -18,18 +18,18 @@ const Navdata = () => {
   const [iscurrentState, setIscurrentState] = useState("Dashboard");
   console.log("s")
  
-  // useEffect(() => {
-  //   var api_token = JSON.parse(get_cookie('authUser'));
-  //   console.log(api_token)
-  //   if (api_token.token){
-  //     console.log('ssd')
-  //     axios.get("/api/SidebarCount").then((res) => {
-  //       setLogCount(res.new_log_count);
-  //       setOppCount(res.new_opportunity_count);
-  //       setJobCount(res.new_job_moving_count);
-  //     })
-  //   }
-  // }, [])
+  useEffect(() => {
+    var api_token = JSON.parse(get_cookie('authUser'));
+    console.log(api_token)
+    if (api_token.token){
+      console.log('ssd')
+      // axios.get("/api/SidebarCount").then((res) => {
+      //   setLogCount(res.new_log_count);
+      //   setOppCount(res.new_opportunity_count);
+      //   setJobCount(res.new_job_moving_count);
+      // })
+    }
+  }, [])
 
   function updateIconSidebar(e) {
     if (e && e.target && e.target.getAttribute("subitems")) {
@@ -145,12 +145,13 @@ const Navdata = () => {
       const headers = {
         Authorization: `Bearer ${api_token.token}` // Assuming the token is stored in the 'token' property
     };
-      axios.get("/api/SidebarCount", { headers }).then((res) => {
-        console.log("res")
-        setLogCount(res.new_log_count);
-        setOppCount(res.new_opportunity_count);
-        setJobCount(res.new_job_moving_count);
-    })}
+    //   axios.get("/api/SidebarCount", { headers }).then((res) => {
+    //     console.log("res")
+    //     setLogCount(res.new_log_count);
+    //     setOppCount(res.new_opportunity_count);
+    //     setJobCount(res.new_job_moving_count);
+    // })
+  }
     
     
   }, [
@@ -165,13 +166,24 @@ const Navdata = () => {
   const menuItems = [
     //CRM
     {
-      label: "CRM",
+      label: "Location",
       isHeader: true,
+    },
+    {
+      id: "location",
+      label: "Location",
+      icon: "bx bx-mail-send",
+      link: "/inbox",
+      Numbervalue: logCount,
+      click: function (e) {
+        e.preventDefault();
+        setIscurrentState("Inbox");
+      },
     },
     //inbox
     {
       id: "inbox",
-      label: "Inbox",
+      label: "Property Type",
       icon: "bx bx-mail-send",
       link: "/inbox",
       Numbervalue: logCount,
@@ -184,7 +196,7 @@ const Navdata = () => {
     //crm settings
     {
       id: "crmsettings",
-      label: "CRM Settings",
+      label: "Price Range",
       icon: "bx bx-wrench",
       link: "/crmsettings",
       click: function (e) {
@@ -193,43 +205,43 @@ const Navdata = () => {
       },
     },
     //customer
-    {
-      id: "customer",
-      label: "Customer",
-      icon: "bx bxs-user-detail",
-      link: "/#",
-      stateVariables: isCustomer,
-      click: function (e) {
-        e.preventDefault();
-        setIsCustomer(!isCustomer);
-        setIscurrentState("Customer");
-        updateIconSidebar(e);
-      },
-      subItems: [
-        {
-          id: "residential",
-          label: "Residential",
-          link: "/customer-residential",
-          parentId: "customer",
-        },
-        {
-          id: "commercial",
-          label: "Commercial",
-          link: "/customer-commercial",
-          parentId: "customer",
-        },],
-    },
+    // {
+    //   id: "customer",
+    //   label: "Bedrooms",
+    //   icon: "bx bxs-user-detail",
+    //   link: "/#",
+    //   stateVariables: isCustomer,
+    //   click: function (e) {
+    //     e.preventDefault();
+    //     setIsCustomer(!isCustomer);
+    //     setIscurrentState("Customer");
+    //     updateIconSidebar(e);
+    //   },
+    //   subItems: [
+    //     {
+    //       id: "residential",
+    //       label: "Residential",
+    //       link: "/customer-residential",
+    //       parentId: "customer",
+    //     },
+    //     {
+    //       id: "commercial",
+    //       label: "Commercial",
+    //       link: "/customer-commercial",
+    //       parentId: "customer",
+    //     },],
+    // },
     //removals
 
-    {
-      label: "Removals",
-      isHeader: true,
-    },
+    // {
+    //   label: "Bathrooms",
+    //   isHeader: true,
+    // },
 
     //opportunities
     {
       id: "opportunities",
-      label: "Opportunities",
+      label: "Square footage",
       icon: "bx bx-bulb",
       link: "/opportunities",
       Numbervalue: oppCount,
@@ -240,42 +252,8 @@ const Navdata = () => {
       },
     },
     {
-      id: "jobs",
-      label: "Jobs",
-      icon: "bx bx-briefcase",
-      link: "/#",
-      stateVariables: isJobs,
-      Numbervalue: jobCount,
-      click: function (e) {
-        e.preventDefault();
-        setIsJobs(!isJobs);
-        setIscurrentState("Jobs");
-        updateIconSidebar(e);
-      },
-      subItems: [
-        {
-          id: "listjobs",
-          label: "List Jobs",
-          link: "/listjobs",
-          parentId: "jobs",
-        },
-        {
-          id: "jobschedule",
-          label: "Job Schedule",
-          link: "/jobschedule",
-          parentId: "jobs",
-        },
-        {
-          id: "backloadingschedule",
-          label: "Backloading Schedule",
-          link: "/backloadingschedule",
-          parentId: "jobs",
-        },],
-    },
-    //Backloading
-    {
       id: "backloading",
-      label: "Backloading",
+      label: "Bathrooms",
       icon: "bx bxs-truck",
       link: "/backloading",
       click: function (e) {
@@ -283,343 +261,378 @@ const Navdata = () => {
         setIscurrentState("Backloading");
       },
     },
-    //Vehicle
-    {
-      id: "vehicleunavail",
-      label: "Vehicle Unavailability",
-      icon: "bx bxs-truck",
-      link: "/vehicleunavail",
-      click: function (e) {
-        e.preventDefault();
-        setIscurrentState("VehicleUnavailability");
-      },
-    },
+    // {
+    //   id: "jobs",
+    //   label: "Jobs",
+    //   icon: "bx bx-briefcase",
+    //   link: "/#",
+    //   stateVariables: isJobs,
+    //   Numbervalue: jobCount,
+    //   click: function (e) {
+    //     e.preventDefault();
+    //     setIsJobs(!isJobs);
+    //     setIscurrentState("Jobs");
+    //     updateIconSidebar(e);
+    //   },
+    //   subItems: [
+    //     {
+    //       id: "listjobs",
+    //       label: "List Jobs",
+    //       link: "/listjobs",
+    //       parentId: "jobs",
+    //     },
+    //     {
+    //       id: "jobschedule",
+    //       label: "Job Schedule",
+    //       link: "/jobschedule",
+    //       parentId: "jobs",
+    //     },
+    //     {
+    //       id: "backloadingschedule",
+    //       label: "Backloading Schedule",
+    //       link: "/backloadingschedule",
+    //       parentId: "jobs",
+    //     },],
+    // },
+    // //Backloading
+    
+    // //Vehicle
+    // {
+    //   id: "vehicleunavail",
+    //   label: "Vehicle Unavailability",
+    //   icon: "bx bxs-truck",
+    //   link: "/vehicleunavail",
+    //   click: function (e) {
+    //     e.preventDefault();
+    //     setIscurrentState("VehicleUnavailability");
+    //   },
+    // },
 
-    //Removalsettings
-    {
-      id: "removalsettings",
-      label: "Removal Settings",
-      icon: "bx bx-wrench",
-      link: "/removalsettings",
-      click: function (e) {
-        e.preventDefault();
-        setIscurrentState("RemovalSettings");
-      },
-    },
-    //invoices
-    {
-      id: "invoices",
-      label: "Removals Invoices",
-      icon: "bx bx-receipt",
-      link: "/invoices",
-      click: function (e) {
-        e.preventDefault();
-        setIscurrentState("Invoices");
-      },
-    },
+    // //Removalsettings
+    // {
+    //   id: "removalsettings",
+    //   label: "Removal Settings",
+    //   icon: "bx bx-wrench",
+    //   link: "/removalsettings",
+    //   click: function (e) {
+    //     e.preventDefault();
+    //     setIscurrentState("RemovalSettings");
+    //   },
+    // },
+    // //invoices
+    // {
+    //   id: "invoices",
+    //   label: "Removals Invoices",
+    //   icon: "bx bx-receipt",
+    //   link: "/invoices",
+    //   click: function (e) {
+    //     e.preventDefault();
+    //     setIscurrentState("Invoices");
+    //   },
+    // },
 
-    //Storage
-    {
-      label: "Storage",
-      isHeader: true,
-    },
-    //Unitslist
-    {
-      id: "unitslist",
-      label: "Storage Jobs",
-      icon: "bx bxs-inbox",
-      link: "/unitslist",
-      click: function (e) {
-        e.preventDefault();
-        setIscurrentState("UnitsList");
-      },
-    },
+    // //Storage
+    // {
+    //   label: "Storage",
+    //   isHeader: true,
+    // },
+    // //Unitslist
+    // {
+    //   id: "unitslist",
+    //   label: "Storage Jobs",
+    //   icon: "bx bxs-inbox",
+    //   link: "/unitslist",
+    //   click: function (e) {
+    //     e.preventDefault();
+    //     setIscurrentState("UnitsList");
+    //   },
+    // },
 
-    //Storage Calendar
-    {
-      id: "Storagecalendar",
-      label: "Storage Calendar",
-      icon: "bx bxs-inbox",
-      link: "/storage-calendar",
-      click: function (e) {
-        e.preventDefault();
-        setIscurrentState("StorageCalendar");
-      },
-    },
+    // //Storage Calendar
+    // {
+    //   id: "Storagecalendar",
+    //   label: "Storage Calendar",
+    //   icon: "bx bxs-inbox",
+    //   link: "/storage-calendar",
+    //   click: function (e) {
+    //     e.preventDefault();
+    //     setIscurrentState("StorageCalendar");
+    //   },
+    // },
 
-    //Storage Settings
-    {
-      id: "storagesettings",
-      label: "Storage Settings",
-      icon: "bx bx-wrench",
-      link: "/storagesettings",
-      click: function (e) {
-        e.preventDefault();
-        setIscurrentState("StorageSettings");
-      },
-    },
-
-
-    //Storage Invoices
-    {
-      id: "storageinvoices",
-      label: "Storage Invoices",
-      icon: "bx bx-receipt",
-      link: "/storageinvoices",
-      click: function (e) {
-        e.preventDefault();
-        setIscurrentState("Storageinvoices");
-      },
-    },
+    // //Storage Settings
+    // {
+    //   id: "storagesettings",
+    //   label: "Storage Settings",
+    //   icon: "bx bx-wrench",
+    //   link: "/storagesettings",
+    //   click: function (e) {
+    //     e.preventDefault();
+    //     setIscurrentState("StorageSettings");
+    //   },
+    // },
 
 
-      //Cleaning
-      {
-        label: "Cleaning",
-        isHeader: true,
-      },
-      //Cleaning-Opportunitites
-      //Unitslist
-      {
-        id: "cleaningopportunities",
-        label: "Opportunities",
-        icon: "bx bx-bulb",
-        link: "/cleaning-opportunities",
-        left_icon:true,
-        click: function (e) {
-          e.preventDefault();
-          setIscurrentState("CleaningOpportunities");
-        },
+    // //Storage Invoices
+    // {
+    //   id: "storageinvoices",
+    //   label: "Storage Invoices",
+    //   icon: "bx bx-receipt",
+    //   link: "/storageinvoices",
+    //   click: function (e) {
+    //     e.preventDefault();
+    //     setIscurrentState("Storageinvoices");
+    //   },
+    // },
+
+
+    //   //Cleaning
+    //   {
+    //     label: "Cleaning",
+    //     isHeader: true,
+    //   },
+    //   //Cleaning-Opportunitites
+    //   //Unitslist
+    //   {
+    //     id: "cleaningopportunities",
+    //     label: "Opportunities",
+    //     icon: "bx bx-bulb",
+    //     link: "/cleaning-opportunities",
+    //     left_icon:true,
+    //     click: function (e) {
+    //       e.preventDefault();
+    //       setIscurrentState("CleaningOpportunities");
+    //     },
 
 
         
-      },
+    //   },
 
-      {
-        id: "CleaningSettings",
-        label: "Cleaning Settings",
-        icon: "bx bx-wrench",
-        link: "/CleaningSettings",
-        click: function (e) {
-          e.preventDefault();
-          setIscurrentState("CleaningSettings");
-        },
-      },
+    //   {
+    //     id: "CleaningSettings",
+    //     label: "Cleaning Settings",
+    //     icon: "bx bx-wrench",
+    //     link: "/CleaningSettings",
+    //     click: function (e) {
+    //       e.preventDefault();
+    //       setIscurrentState("CleaningSettings");
+    //     },
+    //   },
 
-      // Supply Chain
+    //   // Supply Chain
 
-      {
-        label: "Supply Chain",
-        isHeader: true,
-      },
-      {
-        id: "stocklevels",
-        label: "Stock Levels",
-        icon: "bx bx-briefcase",
-        link: "/stocklevels",
-        click: function (e) {
-          e.preventDefault();
-          setIscurrentState("StockLevels");
-        },
-      },
-      {
-        id: "purchaseorder",
-        label: "Purchase Order",
-        icon: "bx bxs-truck",
-        link: "/purchaseorder",
-        click: function (e) {
-          e.preventDefault();
-          setIscurrentState("PurchaseOrder");
-        },
-      },
-      {
-        id: "goodsreceipt",
-        label: "Goods Receipt",
-        icon: "bx bxs-truck",
-        link: "/goodsreceipt",
-        click: function (e) {
-          e.preventDefault();
-          setIscurrentState("GoodsReceipt");
-        },
-      },
-      // {
-      //   id: "vendormanagement",
-      //   label: "Vendor Management",
-      //   icon: "bx bxs-inbox",
-      //   link: "/vendormanagement",
-      //   click: function (e) {
-      //     e.preventDefault();
-      //     setIscurrentState("VendorManagement");
-      //   },
-      // },
-      {
-        id: "supplychainsettings",
-        label: "Supply Chain Settings",
-        icon: "bx bx-wrench",
-        link: "/supplychainsettings",
-        // stateVariables: isSupplyChain,
-        click: function (e) {
-          e.preventDefault();
-          // setIsSupplyChain(!isSupplyChain);
-          setIscurrentState("SupplyChainSettings");
-          // updateIconSidebar(e);
-        },
+    //   {
+    //     label: "Supply Chain",
+    //     isHeader: true,
+    //   },
+    //   {
+    //     id: "stocklevels",
+    //     label: "Stock Levels",
+    //     icon: "bx bx-briefcase",
+    //     link: "/stocklevels",
+    //     click: function (e) {
+    //       e.preventDefault();
+    //       setIscurrentState("StockLevels");
+    //     },
+    //   },
+    //   {
+    //     id: "purchaseorder",
+    //     label: "Purchase Order",
+    //     icon: "bx bxs-truck",
+    //     link: "/purchaseorder",
+    //     click: function (e) {
+    //       e.preventDefault();
+    //       setIscurrentState("PurchaseOrder");
+    //     },
+    //   },
+    //   {
+    //     id: "goodsreceipt",
+    //     label: "Goods Receipt",
+    //     icon: "bx bxs-truck",
+    //     link: "/goodsreceipt",
+    //     click: function (e) {
+    //       e.preventDefault();
+    //       setIscurrentState("GoodsReceipt");
+    //     },
+    //   },
+    //   // {
+    //   //   id: "vendormanagement",
+    //   //   label: "Vendor Management",
+    //   //   icon: "bx bxs-inbox",
+    //   //   link: "/vendormanagement",
+    //   //   click: function (e) {
+    //   //     e.preventDefault();
+    //   //     setIscurrentState("VendorManagement");
+    //   //   },
+    //   // },
+    //   {
+    //     id: "supplychainsettings",
+    //     label: "Supply Chain Settings",
+    //     icon: "bx bx-wrench",
+    //     link: "/supplychainsettings",
+    //     // stateVariables: isSupplyChain,
+    //     click: function (e) {
+    //       e.preventDefault();
+    //       // setIsSupplyChain(!isSupplyChain);
+    //       setIscurrentState("SupplyChainSettings");
+    //       // updateIconSidebar(e);
+    //     },
         
-      },
+    //   },
 
       
 
 
-    //Finance
-    {
-      label: "Finance",
-      isHeader: true,
-    },
-    {
-      id: "financesettings",
-      label: "Finance Settings",
-      icon: "bx bx-wrench",
-      link: "/financesettings",
-      click: function (e) {
-        e.preventDefault();
-        setIscurrentState("FinanceSetitings");
-      },
-    },
-    //People Operations
-    {
-      label: "People Operations",
-      isHeader: true,
-    },
-    {
-      id: "employees",
-      label: "Employees",
-      icon: "bx bxs-user-detail",
-      link: "/employees",
-      click: function (e) {
-        e.preventDefault();
-        setIscurrentState("Employees");
-      },
-    },
-    {
-      id: "peoplesettings",
-      label: "People Settings",
-      icon: "bx bx-wrench",
-      link: "/peoplesettings",
-      click: function (e) {
-        e.preventDefault();
-        setIscurrentState("PeopleSettings");
-      },
-    },
-    //Dashboard
-    {
-      label: "Dashboard",
-      isHeader: true,
-    },
-    {
-      id: "dashboard",
-      label: "Dashboard",
-      icon: "bx bx-home",
-      link: "/dashboard",
-      click: function (e) {
-        e.preventDefault();
-        setIscurrentState("Dashboard");
-      },
-    },
-    //reporting
-    {
-      id: "reporting",
-      label: "Reporting",
-      icon: "bx bx-briefcase",
-      link: "/#",
-      stateVariables: isReporting,
-      click: function (e) {
-        e.preventDefault();
-        setIsReporting(!isReporting);
-        setIscurrentState("Reporting");
-        updateIconSidebar(e);
-      },
-      subItems: [
-        {
-          id: "salespipeline",
-          label: "Sales Pipeline",
-          link: "/salespipeline",
-          parentId: "reporting",
-        },
-        {
-          id: "operationsreport",
-          label: "Field Worker Pay Sheet",
-          link: "/operationsreport",
-          parentId: "reporting",
-        },
-        {
-          id: "leadreport",
-          label: "Lead Report",
-          link: "/leadreport",
-          parentId: "reporting",
-        },
-        {
-          id: "dailyvehiclecheck",
-          label: "Daily Vehicle Check",
-          link: "/dailyvehiclecheck",
-          parentId: "reporting",
-        },],
-    },
-
-    //settings
-    {
-      label: "Settings",
-      isHeader: true,
-    },
-
-    //Settings
-    {
-      id: "settings",
-      label: "Settings",
-      icon: "bx bx-wrench",
-      link: "/settings/organisation-settings",
-      click: function (e) {
-        e.preventDefault();
-        setIscurrentState("Settings");
-      },
-    },
-    //Documentation
-    {
-      id: "documentation",
-      label: "Documentation",
-      icon: "bx bx-file",
-      link: "https://docs.onexfort.com/docs",
-      click: function (e) {
-        e.preventDefault();
-        setIscurrentState("Documentation");
-      },
-    },
-    // //Support
+    // //Finance
     // {
-    //   id: "support",
-    //   label: "Support",
-    //   icon: "bx bx-support",
-    //   link: "https://onexfort.freshdesk.com/support/login",
+    //   label: "Finance",
+    //   isHeader: true,
+    // },
+    // {
+    //   id: "financesettings",
+    //   label: "Finance Settings",
+    //   icon: "bx bx-wrench",
+    //   link: "/financesettings",
     //   click: function (e) {
     //     e.preventDefault();
-    //     setIscurrentState("Support");
+    //     setIscurrentState("FinanceSetitings");
     //   },
     // },
-    //Subscription
+    // //People Operations
     // {
-    //   id: "subscription",
-    //   label: "Manage Subscription",
-    //   icon: "bx bx-credit-card",
-    //   link: "/subscription",
+    //   label: "People Operations",
+    //   isHeader: true,
+    // },
+    // {
+    //   id: "employees",
+    //   label: "Employees",
+    //   icon: "bx bxs-user-detail",
+    //   link: "/employees",
     //   click: function (e) {
     //     e.preventDefault();
-    //     setIscurrentState("Subscription");
+    //     setIscurrentState("Employees");
     //   },
     // },
+    // {
+    //   id: "peoplesettings",
+    //   label: "People Settings",
+    //   icon: "bx bx-wrench",
+    //   link: "/peoplesettings",
+    //   click: function (e) {
+    //     e.preventDefault();
+    //     setIscurrentState("PeopleSettings");
+    //   },
+    // },
+    // //Dashboard
+    // {
+    //   label: "Dashboard",
+    //   isHeader: true,
+    // },
+    // {
+    //   id: "dashboard",
+    //   label: "Dashboard",
+    //   icon: "bx bx-home",
+    //   link: "/dashboard",
+    //   click: function (e) {
+    //     e.preventDefault();
+    //     setIscurrentState("Dashboard");
+    //   },
+    // },
+    // //reporting
+    // {
+    //   id: "reporting",
+    //   label: "Reporting",
+    //   icon: "bx bx-briefcase",
+    //   link: "/#",
+    //   stateVariables: isReporting,
+    //   click: function (e) {
+    //     e.preventDefault();
+    //     setIsReporting(!isReporting);
+    //     setIscurrentState("Reporting");
+    //     updateIconSidebar(e);
+    //   },
+    //   subItems: [
+    //     {
+    //       id: "salespipeline",
+    //       label: "Sales Pipeline",
+    //       link: "/salespipeline",
+    //       parentId: "reporting",
+    //     },
+    //     {
+    //       id: "operationsreport",
+    //       label: "Field Worker Pay Sheet",
+    //       link: "/operationsreport",
+    //       parentId: "reporting",
+    //     },
+    //     {
+    //       id: "leadreport",
+    //       label: "Lead Report",
+    //       link: "/leadreport",
+    //       parentId: "reporting",
+    //     },
+    //     {
+    //       id: "dailyvehiclecheck",
+    //       label: "Daily Vehicle Check",
+    //       link: "/dailyvehiclecheck",
+    //       parentId: "reporting",
+    //     },],
+    // },
+
+    // //settings
+    // {
+    //   label: "Settings",
+    //   isHeader: true,
+    // },
+
+    // //Settings
+    // {
+    //   id: "settings",
+    //   label: "Settings",
+    //   icon: "bx bx-wrench",
+    //   link: "/settings/organisation-settings",
+    //   click: function (e) {
+    //     e.preventDefault();
+    //     setIscurrentState("Settings");
+    //   },
+    // },
+    // //Documentation
+    // {
+    //   id: "documentation",
+    //   label: "Documentation",
+    //   icon: "bx bx-file",
+    //   link: "https://docs.onexfort.com/docs",
+    //   click: function (e) {
+    //     e.preventDefault();
+    //     setIscurrentState("Documentation");
+    //   },
+    // },
+    // // //Support
+    // // {
+    // //   id: "support",
+    // //   label: "Support",
+    // //   icon: "bx bx-support",
+    // //   link: "https://onexfort.freshdesk.com/support/login",
+    // //   click: function (e) {
+    // //     e.preventDefault();
+    // //     setIscurrentState("Support");
+    // //   },
+    // // },
+    // //Subscription
+    // // {
+    // //   id: "subscription",
+    // //   label: "Manage Subscription",
+    // //   icon: "bx bx-credit-card",
+    // //   link: "/subscription",
+    // //   click: function (e) {
+    // //     e.preventDefault();
+    // //     setIscurrentState("Subscription");
+    // //   },
+    // // },
 
    
 
 
   ];
-  return <React.Fragment>{menuItems}</React.Fragment>;
+  return <React.Fragment >{menuItems}</React.Fragment>;
 };
 export default Navdata;

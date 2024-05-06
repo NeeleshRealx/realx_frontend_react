@@ -153,7 +153,7 @@ const VerticalLayout = (props) => {
       item.classList.remove("active");
     });
   };
-
+console.log(navData)
   return (
     <React.Fragment>
       {/* menu Items */}

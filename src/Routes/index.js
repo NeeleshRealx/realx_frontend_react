@@ -9,6 +9,8 @@ import VerticalLayout from "../Layouts/index";
 import { authProtectedRoutes, publicRoutes } from "./allRoutes";
 import { AuthProtected } from './AuthProtected';
 
+console.log(authProtectedRoutes)
+
 const Index = () => {
     return (
         <React.Fragment>

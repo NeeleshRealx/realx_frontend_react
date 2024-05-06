@@ -38,24 +38,25 @@ const Sidebar = ({ layoutType }) => {
     <React.Fragment>
       <div className="app-menu navbar-menu">
         <div className="navbar-brand-box">
-          <Link to="/dashboard" className="logo logo-dark">
-            <span className="logo-sm">
-              <img src={logoX} alt="" height="22" />
-            </span>
-            <span className="logo-lg">
-              <img src={logoDark} alt="" height="40" />
-            </span>
-          </Link>
+          {/* <Link to="/inbox" className="logo logo-dark">
+                                    <span className="logo-sm">
+                                        <img src={logoSm} alt="" height="22" />
+                                    </span>
+                                    <span className="logo-lg">
+                                        <img src={logoDark} alt="" height="40" />
+                                    </span>
+                                </Link>
 
-          <Link to="/dashbaord" className="logo logo-light">
-            <span className="logo-sm">
-              <img src={logoSm} alt="" height="22" />
-            </span>
-            <span className="logo-lg">
-              <img src={logoLight} alt="" height="17" />
-            </span>
-          </Link>
-          <button
+                                <Link to="/dashboard" className="logo logo-light">
+                                    <span className="logo-sm">
+                                        <img src={logoSm} alt="" height="22" />
+                                    </span>
+                                    <span className="logo-lg">
+                                        <img src={logoLight} alt="" height="17" />
+                                    </span>
+                                </Link> */}
+                                <h1 style={{marginTop:"130px"}}>Real x</h1>
+                                <button
             onClick={addEventListenerOnSmHoverMenu}
             type="button"
             className="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover"

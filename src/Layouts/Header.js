@@ -88,7 +88,7 @@ const Header = ({ onChangeLayoutMode, layoutModeType, headerClass }) => {
                         <div className="d-flex">
 
                             <div className="navbar-brand-box horizontal-logo">
-                                <Link to="/inbox" className="logo logo-dark">
+                                {/* <Link to="/inbox" className="logo logo-dark">
                                     <span className="logo-sm">
                                         <img src={logoSm} alt="" height="22" />
                                     </span>
@@ -104,10 +104,11 @@ const Header = ({ onChangeLayoutMode, layoutModeType, headerClass }) => {
                                     <span className="logo-lg">
                                         <img src={logoLight} alt="" height="17" />
                                     </span>
-                                </Link>
+                                </Link> */}
+                                <h1  >Real x</h1>
                             </div>
 
-                            <button
+                            <button 
                                 onClick={toogleMenuBtn}
                                 type="button"
                                 className="btn btn-sm px-3 fs-16 header-item vertical-menu-btn topnav-hamburger"
