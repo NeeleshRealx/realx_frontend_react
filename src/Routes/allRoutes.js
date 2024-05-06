@@ -17,9 +17,7 @@ import Home from "../pages/Home/Home";
 
 const authProtectedRoutes = [
   //inbox
-  {
-    path: "/home", component: <Home/>
-  },
+  
   // {
   //   path: "/",
   //   exact: true,
@@ -31,6 +29,9 @@ const authProtectedRoutes = [
 const publicRoutes = [
   // Authentication Page
   // { path: "/logout", component: <Logout /> },
+  {
+    path: "/home", component: <Home/>
+  },
   { path: "/login", component: <Login /> },
   // { path: "/forgot-password", component: <ForgetPasswordPage /> },
   { path: "/register", component: <Register /> },
