@@ -25,12 +25,12 @@ import axios from "axios";
 //Import images
 import dummyUser from "../../assets/images/users/user-dummy-img.jpg";
 import logoDark from "../../assets/images/logo-dark.png";
+import { ToastContainer, toast } from 'react-toastify';
 
 import classnames from "classnames";
 import BreadCrumb from "../../Components/Common/BreadCrumb";
 import lottie from "lottie-web";
 import { defineElement } from "lord-icon-element";
-import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 // register lottie and define custom element
@@ -38,6 +38,7 @@ defineElement(lottie.loadAnimation);
 
 const Register = () => {
 //   const history = useNavigate();
+  const history = useNavigate();
 
   const [activeTab, setactiveTab] = useState(1);
   const [activeArrowTab, setactiveArrowTab] = useState(4);
@@ -99,47 +100,55 @@ const Register = () => {
 
   
   function toggleTab() {
-
+    console.log(firstname,lastname,email,password,confirmpassword)
       setTab3submitted(true);
       if (
         firstname == "" ||
         lastname == "" ||
-        email == "" ||
+        userEmail == "" ||
         password == "" ||
         confirmpassword == "" 
     
       ) {
-        toast.error("olunga password podu da potta");
+        toast.error("Fill all the values");
         return false;
       }
       else{
-      var data = {
-        email: email,
-        user_name: firstname + " " + lastname,
-        password:password
-      };
+        let data = {
+          email: userEmail,
+          name: firstname + " " + lastname,
+          password: password
+        };
+        
+        axios.post("/api/register", data)
+          .then((res) => {
+            console.log(res);
+            if (res.success === 0) { // Assuming success status is checked in res.data
+              setactiveTab(5);
+              toast.success(res.message);
+              setTimeout(() => {
+                // Redirect to login page or perform any other action
+                history("/login");
+              }, 3000);
+            } else {
+              toast.error(res.message);
+            }
+          })
+          .catch((error) => {
+            toast.error(error.message);
 
-
-      axios.post("/api/registration", data).then((res) => {
-        console.log(res)
-    // setprogressbarvalue(value);
-
-        if (res.error == 0) {
-          setactiveTab(5);
-          toast.success(res.message);
-          setTimeout(() => {
-            // history("/login");
-          }, 3000);
-        }
-      });
+            console.error("Error:", error);
+            // Handle error, display error message, etc.
+          });
+        
       }
-
   }
 
-  document.title = "Form Wizard | Onexfort";
+  document.title = "Registration | Realx";
 
   return (
     <React.Fragment>
+             <ToastContainer closeButton={false} limit={1} />
       <div className="auth-page-wrapper">
         <div className="auth-one-bg-position auth-one-bg" id="auth-particles">
           <div className="bg-overlay"></div>
@@ -463,6 +472,6 @@ const Register = () => {
       </div>
     </React.Fragment>
   );
-};
+}
 
 export default Register;
