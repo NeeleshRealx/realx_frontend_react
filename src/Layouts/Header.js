@@ -123,39 +123,7 @@ const Header = ({ onChangeLayoutMode, layoutModeType, headerClass }) => {
 
                         </div>
 
-                        <div className="hstack gap-2">
-                            <div>
-                                <h6 className="mt-0 ff-secondary fw-semibold text-muted">
-                                    <span className="counter-value bg-light text-primary p-1 fs-16" data-target="97.66">
-                                        {quotes ?
-                                            (
-                                                <CountUp
-                                                    key={quotes} // Add the key prop with the quotes value
-                                                    start={0}
-                                                    end={quotes}
-                                                    decimals={0}
-                                                    duration={4}
-                                                />
-                                            ) : (
-                                                0
-                                            )}
-
-                                    </span> of <b>{totalQuotes} </b>Quotes this month
-                                </h6>
-
-                            </div>
-
-                            <div>
-                                <div className="avatar-sm flex-shrink-0">
-                                    <span className="avatar-title bg-soft-info rounded-circle fs-2">
-                                        <FeatherIcon
-                                            icon="activity"
-                                            className="text-info"
-                                        />
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
+                        
 
                         <div className="d-flex align-items-center">
 

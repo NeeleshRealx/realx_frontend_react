@@ -6,6 +6,7 @@ import './assets/scss/custom.scss';
 import Login from './pages/Authentication/Login';
 import axios from 'axios';
 import Register from './pages/Authentication/Register';
+import Home from './pages/Home/Home';
 
 //imoprt Route
 import Route from './Routes';

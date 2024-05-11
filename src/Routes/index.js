@@ -8,8 +8,14 @@ import VerticalLayout from "../Layouts/index";
 //routes
 import { authProtectedRoutes, publicRoutes } from "./allRoutes";
 import { AuthProtected } from './AuthProtected';
+import Header from '../common/Header';
+import Footer from '../common/Footer';
+// import { Home } from 'feather-icons-react/build/IconComponents';
+import Home from '../pages/Home/Home';
+console.log(authProtectedRoutes,"authp")
+// const isAuthProcted=JSON.parse(AuthProtected)
+console.log(AuthProtected,"auth")
 
-console.log(authProtectedRoutes)
 
 const Index = () => {
     return (
@@ -28,6 +34,13 @@ const Index = () => {
                             exact={true}
                         />
                     ))}
+                    {/* <Route
+                    path={"/"}
+                    element={
+                        <div><Header/>
+                        <Footer/></div>
+                    }
+                    /> */}
                 </Route>
 
                 <Route>
@@ -35,13 +48,19 @@ const Index = () => {
                         <Route
                             path={route.path}
                             element={
-                                <AuthProtected path={route.path}>
-                                    <VerticalLayout>{route.component}</VerticalLayout>
-                                </AuthProtected>}
+                                <Home/>
+                            }
                             key={idx}
                             exact={true}
                         />
                     ))}
+                    {/* <Route
+                    path={"/"}
+                    element={
+                        <Home/>
+                    }
+                    /> */}
+
                 </Route>
             </Routes>
         </React.Fragment>

@@ -12,6 +12,7 @@ import Register from "../pages/Authentication/Register";
 // User Profile
 import { get_cookie } from "../helpers/get_cookie";
 import Home from "../pages/Home/Home";
+import Producttype from "../pages/Product Type/Producttype";
 
 
 
@@ -19,6 +20,9 @@ const authProtectedRoutes = [
   //inbox
   {
     path: "/home", component: <Home/>
+  },
+  {
+    path: "/propertytype", component: <Producttype/>
   },
   // {
   //   path: "/",
