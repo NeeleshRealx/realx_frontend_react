@@ -10,11 +10,12 @@ import { authProtectedRoutes, publicRoutes } from "./allRoutes";
 import { AuthProtected } from './AuthProtected';
 import Header from '../common/Header';
 import Footer from '../common/Footer';
-// import { Home } from 'feather-icons-react/build/IconComponents';
 import Home from '../pages/Home/Home';
+// import { Home } from 'feather-icons-react/build/IconComponents';
 console.log(authProtectedRoutes,"authp")
 // const isAuthProcted=JSON.parse(AuthProtected)
 console.log(AuthProtected,"auth")
+
 
 
 const Index = () => {
